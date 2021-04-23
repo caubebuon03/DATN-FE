@@ -1,0 +1,86 @@
+<div class="features_items">
+    <section id="cart_items">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <ol class="breadcrumb">
+                      <li><a href="">Home</a></li>
+                      <li class="active">Shopping Cart</li>
+                    </ol>
+                </div>
+                <div class="table-responsive cart_info" style="width: 850px;">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="image">Hình ảnh</td>
+                                <td class="description">Tên sản phẩm</td>
+                        <!-- 		<td class="description">CPU</td>
+                        <td class="description">Ram</td>
+                        <td class="description">VGA</td> -->
+                                <td class="price">Giá</td>
+                                <!-- <td class="description">Mô tả</td> -->
+                                <td class="quantity">Số lượng</td>
+                                <td class="total">Tổng tiền</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                            <tr *ngFor="let c of items">
+                                <td class="product_remove">
+                                    <a><img src="./assets/images/SanPham/{{c.product_image}}" width="50" alt="" /></a>
+                                </td>
+                                <td class="cart_description">
+                                    <p><a href="">{{c.product_name}}</a></p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>{{c.product_price | currency:'VND'}}</p>
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="cart_quantity_button">
+                                       <input class="cary_quantity_input" name="qtybutton" #inp  min="1" max="100" (change)="addQty(c,inp.value)" [value]="c.quantity" type="number">                                                                    
+                                        <!-- <input class="cart_quantity_input" style="width: 30px;" type="text" name="cart_quantity">
+                                        <input #inp  min="1" max="100" (change)="addQty(c,inp.value)" [value]="c.quantity" type="number"> -->
+                                        <!-- <input type="submit" value="Update" name="update_qty" class="btn btn-default btn-sm"> -->
+                                        
+                                        
+                                    </div>
+                                </td>
+                                <td class="product-subtotal">{{ c.money | currency:'VND' }}</td>
+                               
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" (click)="_cart.deleteItem(c.product_id)"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                           
+    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section> <!--/#cart_items-->
+    
+        <section id="do_action">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="total_area">
+                            <ul>
+                                <li>Tổng tiền<span>{{total | currency:'VND'}}</span></li>
+                                
+                                
+                            </ul>
+                                <!-- <a class="btn btn-default update" href="">Update</a> -->
+                       
+                                     
+                                      <a class="btn btn-default check_out" routerLink="/customer/checkout">Thanh toán</a>
+                                      
+                                  
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!--/#do_action-->
+</div>
+    

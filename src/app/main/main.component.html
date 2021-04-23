@@ -1,0 +1,157 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <ng-container *ngFor="let mn of menus">
+        <div class="left-sidebar" *ngIf="mn.children !=null">
+          
+          <h2>{{mn.category_name}}</h2>
+
+        
+          <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+
+            <ng-container *ngFor="let m of mn.children">
+            <div  class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordian"[routerLink] = "['/product/list',m.category_id]">
+                    <span class="badge pull-right"><i ></i></span>
+                    {{m.category_name}}
+                  </a>
+                </h4>
+              </div>
+            </div>
+          </ng-container>
+
+
+           
+          </div><!--/category-products-->
+          <ng-container *ngFor="let x of brands">
+        
+          <div class="brands_products" *ngIf="x.children !=null"><!--brands_products-->
+            <h2>{{x.brand_name}}</h2>
+
+            <div class="brands-name" >
+              <ul class="nav nav-pills nav-stacked"  id="accordian">
+                <ng-container *ngFor="let i of x.children">
+                <li style="color: #696763;     text-decoration: none;"><a data-toggle="collapse" data-parent="#accordian" [routerLink] = "['/product/listb',i.brand_id]" > <span class="pull-right">(50)</span>{{i.brand_name}}</a></li>
+              
+                </ng-container> 
+              </ul>
+            </div>
+          </div><!--/brands_products-->
+        </ng-container> 
+        <div class="price-range"><!--price-range-->
+          <h2>Price Range</h2>
+          <div class="well text-center">
+             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+             <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+          </div>
+        </div><!--/price-range-->
+        <div class="shipping text-center"><!--shipping-->
+          <a routerLink="/chitiet"><img src="./assets/images/home/1.jpg" alt="" /></a>
+          </div><!--/shipping-->
+        <br>
+          <div class="shipping text-center"><!--shipping-->
+            <a routerLink="/chitiet"><img src="./assets/images/home/5.jpg" alt="" /></a>
+            </div><!--/shipping-->
+
+            
+          
+         
+        
+        </div>
+      </ng-container> 
+      </div>
+
+      <div class="recommended_items"><!--recommended_items-->
+        <h2 class="title text-center">Sản phẩm mới</h2>
+        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="item active">	
+              <ng-container *ngFor="let item of list_item_new">
+              <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                  <div class="single-products">
+                    <div class="productinfo text-center">
+                    <a [routerLink]="['/product/chitiet',item.product_id]"><img src="./assets/images/SanPham/{{item.product_image}}" alt="" /></a>
+                      <h2>{{item.product_price | currency:"VND"}}</h2>
+                     <a [routerLink]="['/product/chitiet',item.product_id]"><p>{{item.product_name}}</p></a> 
+                      <a (click)="addToCart(item)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            </div>
+          </div>
+        </div>
+     
+      </div><!--/recommended_items-->
+    
+      
+      <!-- <div class="col-sm-9 padding-right">
+        <div class="features_items">
+          <h2 class="title text-center">Sản phẩm Mới</h2>
+          <ng-container *ngFor="let item of list_item_new">
+          
+          <div class="col-sm-4">
+            <div class="product-image-wrapper">
+              <div class="single-products">
+                
+                  <div class="productinfo text-center">
+                 <a [routerLink]="['/product/chitiet',item.product_id]"><img src="./assets/images/SanPham/{{item.product_image}}" alt="" /></a> 
+                    <h2>{{item.product_price | currency:"VND"}}</h2>
+                 <a [routerLink]="['/product/chitiet',item.product_id]"><p>{{item.product_name}}</p></a>
+                    <a (click)="addToCart(item)" class="btn btn-default add-to-cart" ><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                  </div>
+                
+              </div>
+              
+              <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+                  <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                  <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ng-container> 
+        </div>
+      </div> -->
+      
+      <div class="col-sm-9 padding-right">
+        <div class="features_items"><!--features_items-->
+          <h2 class="title text-center">Sản phẩm</h2>
+          <ng-container *ngFor="let item of list_item">
+          
+          <div class="col-sm-4">
+            <div class="product-image-wrapper">
+              <div class="single-products">
+                
+                  <div class="productinfo text-center">
+                 <a [routerLink]="['/product/chitiet',item.product_id]"><img src="./assets/images/SanPham/{{item.product_image}}" alt="" /></a> 
+                    <h2>{{item.product_price | currency:"VND"}}</h2>
+                 <a [routerLink]="['/product/chitiet',item.product_id]"><p>{{item.product_name}}</p></a>
+                    <a (click)="addToCart(item)" class="btn btn-default add-to-cart" ><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                  </div>
+                
+              </div>
+              
+              <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+                  <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                  <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ng-container> 
+        </div><!--features_items-->
+        <div>
+          <ngb-pagination style="float: right;" [collectionSize]="list_item[0].total" [pageSize]="size" [(page)]="index" [maxSize]="8" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+               </div>
+      </div>
+    </div>
+  </div>
+</section>
