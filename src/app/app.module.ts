@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChitietComponent } from './product/chitiet/chitiet.component';
 import { ListComponent } from './product/list/list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TimKiemComponent } from './tim-kiem/tim-kiem.component';
 
 
 
@@ -23,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     MainComponent,
     FooterComponent,
+    TimKiemComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,157 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <ng-container *ngFor="let mn of menus">
+          <div class="left-sidebar" *ngIf="mn.children !=null">
+
+            <h2>{{mn.category_name}}</h2>
+
+
+            <div class="panel-group category-products" id="accordian">
+              <!--category-productsr-->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordian" href="javascript:void(0)"
+                      (click)="locTheoDanhMuc('%20')">
+                      <span class="badge pull-right"><i></i></span>
+                     <span id="danhMuc_0">Tất cả danh mục</span>
+                    </a>
+                  </h4>
+                </div>
+              </div>
+              <ng-container *ngFor="let m of mn.children">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordian" href="javascript:void(0)"
+                        (click)="locTheoDanhMuc(m.category_id)">
+                        <span class="badge pull-right"><i></i></span>
+                        <span id="danhMuc_{{m.category_id}}">{{m.category_name}}</span>
+                      </a>
+                    </h4>
+                  </div>
+                </div>
+              </ng-container>
+
+
+
+            </div>
+            <!--/category-products-->
+            <ng-container *ngFor="let x of brands">
+
+              <div class="brands_products" *ngIf="x.children !=null">
+                <!--brands_products-->
+                <h2>{{x.brand_name}}</h2>
+                <div class="brands-name">
+                  <ul class="nav nav-pills nav-stacked" id="accordian">
+                    <li style="color: #696763;     text-decoration: none;"><a data-toggle="collapse"
+                      data-parent="#accordian" href="javascrip:void(0)" (click)="locTheoThuongHieu('%20')">
+                      <span class="pull-right">(50)</span><span id="thuongHieu_0">Tất cả</span></a>
+                    </li>
+                    <ng-container *ngFor="let i of x.children">
+                      <li style="color: #696763;     text-decoration: none;"><a data-toggle="collapse"
+                          data-parent="#accordian" href="javascrip:void(0)" (click)="locTheoThuongHieu(i.brand_id)">
+                          <span class="pull-right">(50)</span><span id="thuongHieu_{{i.brand_id}}">{{i.brand_name}}</span></a>
+                        </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </div>
+              <!--/brands_products-->
+            </ng-container>
+            <div class="price-range">
+              <!--price-range-->
+              <h2>Price Range</h2>
+              <form [formGroup]="formGia">
+                <div class="well text-center row">
+                  <div class="col-md-6">
+                    <label for="minP">Giá min:</label><input id="minP" type="text" value="0" formControlName="giaMin"
+                      (change)="locTheoGia()" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="maxP">Giá max:</label><input id="maxP" type="text" value="{{0}}"
+                      formControlName="giaMax" (change)="locTheoGia()" class="form-control">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!--/price-range-->
+            <div class="shipping text-center">
+              <!--shipping-->
+              <a routerLink="/chitiet"><img src="./assets/images/home/1.jpg" alt="" /></a>
+            </div>
+            <!--/shipping-->
+            <br>
+            <div class="shipping text-center">
+              <!--shipping-->
+              <a routerLink="/chitiet"><img src="./assets/images/home/5.jpg" alt="" /></a>
+            </div>
+            <!--/shipping-->
+
+
+
+
+
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-sm-9 padding-right">
+        <div class="features_items">
+          <!--features_items-->
+          <h2 class="title text-center">Kết quả tìm kiếm</h2>
+          <div class="row m-md-2">
+            <div class="col-md-2">
+              <div class="">
+                <!-- <label for="chonRam">RAM:</label> -->
+                <select name="" (change)="locTheoRam($event.target.value)" id="chonRam">
+                  <option value="0">Ram</option>
+                  <option *ngFor="let r of listRam" value="{{r}}">{{r}}GB</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <ng-container *ngFor="let item of spResults">
+
+
+              <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                  <div class="single-products">
+
+                    <div class="productinfo text-center">
+                      <a [routerLink]="['/product/chitiet',item.product_id]"><img
+                          src="../../assets/images/SanPham/{{item.product_image}}" alt="" /></a>
+                      <h2>{{item.product_price | currency:"VND"}}</h2>
+                      <a [routerLink]="['/product/chitiet',item.product_id]">
+                        <p>{{item.product_name}}</p>
+                      </a>
+                      <a (click)="addToCart(item)" class="btn btn-default add-to-cart"><i
+                          class="fa fa-shopping-cart"></i>Add to cart</a>
+                    </div>
+
+                  </div>
+
+                  <div class="choose">
+                    <ul class="nav nav-pills nav-justified">
+                      <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                      <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </ng-container>
+          </div>
+        </div>
+        <!--features_items-->
+        <div>
+          <ngb-pagination style="float: right;" [collectionSize]="total" [pageSize]="size" [(page)]="index"
+            [maxSize]="size" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
