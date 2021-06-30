@@ -31,6 +31,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
     });
   }
   onSubmitLogin(value: any) { 
+    alert('Đăng nhập thành công!!!');
+    window.history.back();
 
   }
   onSubmitRegister(value: any) { 

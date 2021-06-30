@@ -5,8 +5,8 @@
         <div class="col-sm-6">
           <div class="contactinfo">
             <ul class="nav nav-pills">
-              <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-              <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+              <li><a href="#"><i class="fa fa-phone"></i> +84 983286944</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i>caubebuon03@gmail.com</a></li>
             </ul>
           </div>
         </div>
@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="logo pull-left">
-            <a href="index.html"><img src="./assets/images/home/logo1.png" alt="" /></a>
+            <a href="index.html"><img src="./assets/images/home/logo5.png" alt="" /></a>
           </div>
           <div class="btn-group pull-right">
             <div class="btn-group">
@@ -59,11 +59,11 @@
         <div class="col-sm-8">
           <div class="shop-menu pull-right">
             <ul class="nav navbar-nav">
-              <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-              <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-              <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-              <li><a routerLink="/customer/cart"><i class="fa fa-shopping-cart"></i> Cart({{total}})</a></li>
-              <li><a routerLink="/customer/login"><i class="fa fa-lock"></i> Login</a></li>
+              <li><a href="#"><i class="fa fa-user"></i>Tài khoản</a></li>
+              <li><a href="#"><i class="fa fa-star"></i>Danh sách yêu thích</a></li>
+              <li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Thanh toán</a></li>
+              <li><a routerLink="/customer/cart"><i class="fa fa-shopping-cart"></i>Cửa hàng({{total}})</a></li>
+              <li><a routerLink="/customer/login"><i class="fa fa-lock"></i>Đăng nhập</a></li>
             </ul>
           </div>
         </div>
@@ -85,14 +85,13 @@
           </div>
           <div class="mainmenu pull-left">
             <ul class="nav navbar-nav collapse navbar-collapse">
-              <li><a href="index.html" class="active">Home</a></li>
-              <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+              <li><a href="index.html" class="active">Trang chủ</a></li>
+              <li class="dropdown"><a href="#">Cửa hàng<i class="fa fa-angle-down"></i></a>
                                   <ul role="menu" class="sub-menu">
-                                      <li><a href="shop.html">Products</a></li>
-                  <li><a href="product-details.html">Product Details</a></li> 
-                  <li><a href="checkout.html">Checkout</a></li> 
-                  <li><a routerLink="/customer/cart">Cart({{total}}) </a></li> 
-                  <li><a routerLink="/customer/login">Login</a></li> 
+                                      <li><a href="shop.html">Sản phẩm</a></li>
+                  <li><a href="checkout.html">Thanh toán</a></li> 
+                  <li><a routerLink="/customer/cart">Cửa hàng({{total}}) </a></li> 
+                  <li><a routerLink="/customer/login">Đăng nhập</a></li> 
                                   </ul>
                               </li> 
               <ng-container *ngFor="let mn of menus">
@@ -118,13 +117,14 @@
               </li> 
               <!-- <li  *ngIf="mn.children == null"><a href="">{{mn.category_name}}</a></li> -->
             </ng-container>
-              <li><a href="contact-us.html">Contact</a></li>
+              <li><a href="contact-us.html">Liên hệ</a></li>
             </ul>
           </div>
         </div>
         <div class="col-sm-3"><form [formGroup]="formSearch" (ngSubmit)="timKiem()">
-          <div class="search_box pull-right"  >
-            <input type="text" formControlName="keyWord" placeholder="Search"/>
+          <div class="search_box pull-right">
+            <input  type="text" formControlName="keyWord"  placeholder="Tìm kiếm"/>
+            
           </div></form>
         </div>
       </div>

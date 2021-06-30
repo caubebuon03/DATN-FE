@@ -9,6 +9,7 @@ import { BaseComponent } from '../lib/base-component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
+  searchResultHeader:any;
   menus: any;
   total: any;
   brands: any;
@@ -22,7 +23,14 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.buildSearchForm();
+    
+    if (localStorage.getItem('searchResult')) {
+      this.searchResultHeader = JSON.parse(localStorage.getItem('searchResult'));
+    }
+    else{
+      this.searchResultHeader.keyWord='';
+    }
+    this.buildSearchForm(); 
     this._api.get('/api/category/get-category').takeUntil(this.unsubscribe).subscribe(res => {
       this.menus = res;
     });
@@ -40,9 +48,16 @@ export class HeaderComponent extends BaseComponent implements OnInit {
   }
 
   buildSearchForm() {
-    this.formSearch = this.fb.group({
-      'keyWord': ['']
-    });
+    if(this.router.url!=='/search'){
+      this.formSearch = this.fb.group({
+        'keyWord': ['']
+      });
+    }
+    else {
+      this.formSearch = this.fb.group({
+        'keyWord': [this.searchResultHeader.keyWord]
+      });
+    }
   }
 
   timKiem() {
@@ -66,7 +81,15 @@ export class HeaderComponent extends BaseComponent implements OnInit {
           size:12
         }
         localStorage.setItem('searchResult', JSON.stringify(searchResult));
-        this.router.navigate(['search']);
+        if(this.router.url === '/search'){
+          window.location.replace('search');
+          this.formSearch = this.fb.group({
+            'keyWord': [keyWord]
+          });
+        }
+        else{
+        this.router.navigate(['/search']);
+        }
       });
   }
 }

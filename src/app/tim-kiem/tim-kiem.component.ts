@@ -143,7 +143,7 @@ export class TimKiemComponent extends BaseComponent implements OnInit {
       this.highlightSelectedChoice('thuongHieu_0');
     }
     else {
-      this.unhighlightChoices("thuongHieu_0", ['_0']);
+      this.unhighlightChoices("thuongHieu", ['_0']);
       this.highlightSelectedChoice('thuongHieu_' + maThuongHieu);
     }
 

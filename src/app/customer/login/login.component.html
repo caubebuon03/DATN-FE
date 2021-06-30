@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-sm-4 col-sm-offset-1">
         <div class="login-form"><!--login form-->
-          <h2>Login to your account</h2>
+          <h2>Đăng Nhập</h2>
           <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin(loginForm.value)"> -->
-            <form action="" method="POST">
+            <form action="" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin(loginForm.value)">
             <input for="email" id="email" value="" name="email_account" type="text" placeholder="Email" />
             <input type="password" id="pass" name="password_account" placeholder="Password" />
 
