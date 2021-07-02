@@ -75,7 +75,7 @@ export class TimKiemComponent extends BaseComponent implements OnInit {
 
   }
 
-  // !!! '%20' là dấu cách trong đỉa chỉ trên web, tức là ' '
+
   getTimKiem() {
 
     if (localStorage.getItem('searchResult')) {
